@@ -14,3 +14,9 @@
         grid-template-columns: repeat(2, 1fr);
     }
 }
+.cart-container{
+    background-color: #ff9d094d;
+}
+.cart-container:hover{
+    background-color: rgb(254, 182, 46);
+}
