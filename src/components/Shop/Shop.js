@@ -32,12 +32,22 @@ fetch('products.json')
         
     },[products])
     // eventhandler
-    const handleClick = (product) =>{
+    const handleClick = (selectproduct) =>{
+        let  newCart = [];
         // console.log(product);
         // cart.push(product);
-        const newCart = [...cart,product];
+        const exists = cart.find(product => product.id === selectproduct.id );
+        if(!exists){
+            selectproduct.quantity = 1;
+            newCart = [...cart, selectproduct];
+        }
+       else{
+           const rest = cart.filter(product => product.id !== selectproduct.id);
+           exists.quantity = exists.quantity + 1;
+           newCart = [...rest, exists];
+       }
         setcart(newCart);
-        addToDb(product.id);
+        addToDb(selectproduct.id);
     }
 
 
